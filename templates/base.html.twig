@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Portfolio | {% block title %}{% endblock %}</title>
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
+        <link rel="stylesheet" href="{{asset('css/app.css')}}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css">
+    {% endblock %}
+</head>
+<body>
+<div class="backBody">
+    <header id="headerScroll" class="header">
+        <!--Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-unique">
+            <img id="logo" src="{{ asset('img/CampusAcademy.png') }}" alt="L'école" >
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-3" aria-controls="navbarSupportedContent-3" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent-3">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="hvr-float-shadow" id="active" href="{{ path('portfolio_home') }}">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="hvr-float-shadow" href="#recommandation">Recommandation</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ asset('img/Cv_Nathan_PIGNON.pdf') }}"
+                           download="Nathan_PIGNON_CV" class="hvr-icon-hang hvr-float-shadow" id="cvbtn"><i class="fas fa-download hvr-icon"></i> CV</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto nav-flex-icons">
+                    <li class="nav-item">
+                    <a type="button" class="hvr-float-shadow" id="navLeft" data-toggle="modal" data-target="#exampleModal"><i class="far fa-envelope"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <!--/.Navbar -->
+    </header>
+    {% block body %}
+
+        <!-- Button trigger modal -->
+
+
+
+
+    {% endblock %}
+    <footer class="footer">
+        <div id="service">
+            <a class="hvr-float-shadow" href="https://www.instagram.com/nathan_pignon/?hl=fr"><i class="fab fa-instagram"></i></a>
+            <a class="hvr-float-shadow" href="https://www.linkedin.com/in/nathan-pignon-b8b395199/"><i class="fab fa-linkedin"></i></a>
+            <a class="hvr-float-shadow" href="https://campus.academy/"><i class="fas fa-graduation-cap"></i></a>
+            <br> <br>
+        </div>
+    </footer>
+    {% block javascripts %}
+        <script src="{{asset('js/jquery.js')}}"></script>
+        <script src="{{asset('js/popper.min.js')}}"></script>
+        <script src="{{asset('js/bootstrap.min.js')}}"></script>
+        <script src="{{asset('js/mdb.min.js')}}"></script>
+        <script src="https://unpkg.com/scrollreveal"></script>
+        <script src="{{asset('js/scroller.js')}}"></script>
+        <script src="{{asset('js/Pour_cbJS.js')}}"></script>
+        <script src="{{asset('js/scroll.js')}}"></script>
+        <script src="{{asset('js/machineEcrire.js')}}"></script>
+        <script src="{{asset('js/navicon.js')}}"></script>
+    {% endblock %}
+</div>
+</body>
+</html>

@@ -1,0 +1,4 @@
+INSERT INTO
+                validation (nom, prenom, content, created_at)
+                VALUES
+                ('Essai', 'Validation', 'Premier essai avec nouvelle table validation', '2020-06-20 17:06:54')

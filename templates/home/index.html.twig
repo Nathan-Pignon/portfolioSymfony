@@ -1,0 +1,152 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme contactForm 'bootstrap_4_layout.html.twig' %}
+
+{% block title %}Nathan PIGNON{% endblock %}
+
+{% block body %}
+
+    <div class="fondHome">
+        <video autoplay muted loop id="myVideo">
+            <source src="css/fondVideo.mp4" type="video/mp4">
+        </video>
+        <div class="fondHome2">
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5>Me contacter</h5>
+                        </div>
+                        <div class="modal-body">
+                            <div class="formContact">
+                                {{ form_start(contactForm) }}
+                                <div class="col-sm-10 col-lg-7 col-md-8">
+                                {{ form_row(contactForm.nom, {'attr': {'placeholder': "Votre nom"}}) }}
+                                {{ form_row(contactForm.prenom, {'attr': {'placeholder': "Votre prenom"}}) }}
+                                {{ form_row(contactForm.email, {'attr': {'placeholder': "Votre email"}}) }}
+                                </div>
+                                <div class="col-sm-12 col-lg-12 col-md-12">
+                                {{ form_row(contactForm.message, {'attr': {'placeholder': "Votre message ...", 'class': "md-textarea", 'rows': "10"}}) }}
+                                </div>
+                            </div>
+                        </div>
+                                <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                            <button type="submit" class="btn btn-success">Envoyer !</button>
+                            {{ form_end(contactForm) }}
+                            </div>
+                                </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <section class="presentation">
+                <div class="citation">
+                    <p>Nathan PIGNON</p>
+                </div>
+                <div class="img">
+                    <img id="foto" src="{{asset('img/photo3.jpg')}}" alt="C'est ma photo" ></a>
+                </div>
+                    <a href="" class="typewrite" data-period="1000" data-type='[ "Bienvenue sur mon Portfolio !", "Etudiant en développement informatique à Campus Academy",
+            "Recherche une alternance pour Septembre 2020" ]'>
+                    </a>
+                <br>
+            </section>
+
+            <div class="imgLanguage">
+
+                <p class="competenceTitre">Mes compétences</p>
+
+                <div class="conteneurLanguage">
+                    <img class="language" src="{{asset('img/html.png')}}" alt="html">
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 95%"></div>
+                    </div>
+                    <img class="language" src="{{asset('img/css.png')}}" alt="css">
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 90%"></div>
+                    </div>
+                </div>
+
+                <div class="conteneurLanguage">
+                    <img class="language" src="{{asset('img/js.png')}}" alt="js">
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 55%"></div>
+                    </div>
+                    <img class="language" src="{{asset('img/python.png')}}" alt="python">
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 40%"></div>
+                    </div>
+                </div>
+
+                <div class="conteneurLanguage">
+                    <img class="language" src="{{asset('img/php.png')}}" alt="php">
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 85%"></div>
+                    </div>
+                    <img class="language" src="{{asset('img/sql.png')}}" alt="sql">
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 80%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+                <main class="mainHome">
+                    <p class="titreJeu">Trouves le bon nombre</p>
+                    <p class="explication">Le but est simple ! <br>
+                            Comme au juste-prix, en fonction des "plus" et des "moins" que la machine t'indiques tu dois trouver le bon nombre en faisant le moins de coups possible.</p>
+                    <br>
+                    <button class="btn btn-success hvr-pulse" id="boutton" onClick="jeu3()">Jouer !</button>
+
+                    <p class="titreJeu">Pour Combien ?</p>
+                    <iframe class="video" width="560" height="315" src="https://www.youtube.com/embed/lVaUVSW5Oy0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <br><button class="btn btn-success hvr-pulse" id="boutton" onClick="jeu()">Jouer !</button>
+
+
+                    <section id="recommandation">
+
+                        <p class="recoTitre">Recommandation</p>
+
+                        {% if commentaires | length == 0 %}
+                            <div class="msgReco">
+                                <h1>Aucun avis trouvé !</h1>
+                                <p>Si mes services vous ont aidé, n'hésitez pas à me recommander en remplissant le formulaire ci-dessous</p>
+                            </div>
+                        {% else %}
+                            {% for commentaire in commentaires %}
+                                <div class="comment">
+                                    <div class="commentName">
+                                        <h2>{{ commentaire.Nom }} {{ commentaire.Prenom }}</h2> ({{ commentaire.createdAt | date('d/m/Y à H:i') }})
+                                    </div>
+                                    <br>
+                                    <div class="commentContent">
+                                        <i class="fas fa-quote-left" id="quotes-left"></i>   {{ commentaire.Content }}   <i class="fas fa-quote-right" id="quotes-right"></i>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                    </section>
+                </main>
+
+                <div class="formComment col-">
+                    {{ form_start(commentForm) }}
+                    <div class="col-sm-5 col-lg-3 col-md-4">
+                        {{ form_row(commentForm.nom, {'attr': {'placeholder': "Votre nom"}}) }}
+                        {{ form_row(commentForm.prenom, {'attr': {'placeholder': "Votre prenom"}}) }}
+                    </div>
+                    <div class="col-sm-10 col-lg-5 col-md-7">
+                        {{ form_row(commentForm.content, {'attr': {'placeholder': "Votre avis ...", 'class': "md-textarea", 'rows': "10"}}) }}
+                    </div>
+                    <button type="submit" class="btn btn-primary">Publier !</button>
+                    {{ form_end(commentForm) }}
+                </div>
+
+
+{% endblock %}
